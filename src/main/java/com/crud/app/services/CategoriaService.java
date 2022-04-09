@@ -14,9 +14,12 @@ public class CategoriaService {
 	@Autowired
 	CategoriaRepository categoriaRepository;
 
-	public Optional<Categoria> buscar(Long id) {
+	public Optional<Categoria> findById(Long id) {
 		return categoriaRepository.findById(id);
 	}
-
+	
+	
+	
+	
 	
 }
