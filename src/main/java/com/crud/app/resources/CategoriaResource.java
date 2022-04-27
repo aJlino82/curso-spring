@@ -1,5 +1,7 @@
 package com.crud.app.resources;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +17,7 @@ import com.crud.app.services.CategoriaService;
 public class CategoriaResource {
 
 	@Autowired
-	CategoriaService categoriaService;
+	private CategoriaService categoriaService;
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Categoria> findById(@PathVariable Long id) {
@@ -23,5 +25,17 @@ public class CategoriaResource {
 				.orElse(ResponseEntity.notFound().build());
 
 	}
+	@GetMapping
+	public List<Categoria> findAll() {
+		return categoriaService.findAll();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

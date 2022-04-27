@@ -1,5 +1,6 @@
 package com.crud.app.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,12 @@ public class CategoriaService {
 	public Optional<Categoria> findById(Long id) {
 		return categoriaRepository.findById(id);
 	}
+
+	public List<Categoria> findAll() {
+		return categoriaRepository.findAll();
+	}
+	
+	
 	
 	
 	
