@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.crud.app.domain.Categoria;
 import com.crud.app.repositories.CategoriaRepository;
+import com.crud.app.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
@@ -15,18 +16,15 @@ public class CategoriaService {
 	@Autowired
 	CategoriaRepository categoriaRepository;
 
-	public Optional<Categoria> findById(Long id) {
-		return categoriaRepository.findById(id);
+	public Categoria findById(Long id) {
+		Optional<Categoria> obj = categoriaRepository.findById(id);
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
+
 	}
 
 	public List<Categoria> findAll() {
 		return categoriaRepository.findAll();
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }

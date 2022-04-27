@@ -21,9 +21,8 @@ public class CategoriaResource {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Categoria> findById(@PathVariable Long id) {
-		return categoriaService.findById(id).map(record -> ResponseEntity.ok().body(record))
-				.orElse(ResponseEntity.notFound().build());
-
+		Categoria obj = this.categoriaService.findById(id);
+		return ResponseEntity.ok().body(obj);
 	}
 	@GetMapping
 	public List<Categoria> findAll() {

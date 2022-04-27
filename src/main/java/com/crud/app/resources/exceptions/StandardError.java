@@ -1,7 +1,13 @@
 package com.crud.app.resources.exceptions;
 
-public class StandardError {
+import java.io.Serializable;
 
+public class StandardError implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer status;
 	private Long timestamp;
 	private String message;
