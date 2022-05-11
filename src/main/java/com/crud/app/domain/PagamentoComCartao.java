@@ -1,7 +1,9 @@
 package com.crud.app.domain;
 
-import com.crud.app.domain.enums.EstadoPagamento;
+import javax.persistence.Entity;
 
+import com.crud.app.domain.enums.EstadoPagamento;
+@Entity
 public class PagamentoComCartao extends Pagamento {
 	private static final long serialVersionUID = 1L;
 

@@ -2,8 +2,10 @@ package com.crud.app.domain;
 
 import java.util.Date;
 
-import com.crud.app.domain.enums.EstadoPagamento;
+import javax.persistence.Entity;
 
+import com.crud.app.domain.enums.EstadoPagamento;
+@Entity
 public class PagamentoComBoleto extends Pagamento {
 	private static final long serialVersionUID = 1L;
 
