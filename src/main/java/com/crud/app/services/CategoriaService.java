@@ -27,4 +27,8 @@ public class CategoriaService {
 		return categoriaRepository.findAll();
 	}
 
+	public <S extends Categoria> S save(S entity) {
+		return categoriaRepository.save(entity);
+	}
+
 }
