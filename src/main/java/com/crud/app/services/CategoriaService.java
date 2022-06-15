@@ -31,4 +31,9 @@ public class CategoriaService {
 		return categoriaRepository.save(entity);
 	}
 
+	public Categoria update(Categoria categoria) {
+		findById(categoria.getId());
+		return categoriaRepository.save(categoria);
+	}
+
 }
