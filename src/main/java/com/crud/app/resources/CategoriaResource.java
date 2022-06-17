@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,6 +45,12 @@ public class CategoriaResource {
 	public ResponseEntity<Categoria> updateCategoria(@RequestBody Categoria categoria, @PathVariable long id) {
 		categoria.setId(id);
 		categoria = categoriaService.update(categoria);
+		return ResponseEntity.noContent().build();
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Categoria> deletar(@PathVariable long id) {
+		categoriaService.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
 
