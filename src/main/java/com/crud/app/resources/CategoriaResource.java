@@ -1,7 +1,10 @@
 package com.crud.app.resources;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.crud.app.domain.Categoria;
 import com.crud.app.dto.CategoriaDTO;
@@ -42,14 +46,19 @@ public class CategoriaResource {
 	}
 
 	@PostMapping
-	public Categoria createCat(@RequestBody Categoria categoria) {
-		return categoriaService.save(categoria);
+	public ResponseEntity<Void> save(@Valid @RequestBody CategoriaDTO objDTO) {
+
+		Categoria obj = categoriaService.saveFromDTO(objDTO);
+		obj = categoriaService.save(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Categoria> updateCategoria(@RequestBody Categoria categoria, @PathVariable long id) {
-		categoria.setId(id);
-		categoria = categoriaService.update(categoria);
+	public ResponseEntity<Categoria> updateCategoria(@Valid @RequestBody CategoriaDTO objDto, @PathVariable long id) {
+		Categoria obj = categoriaService.saveFromDTO(objDto);
+		obj.setId(id);
+		obj = categoriaService.update(obj);
 		return ResponseEntity.noContent().build();
 	}
 

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.crud.app.domain.Categoria;
+import com.crud.app.dto.CategoriaDTO;
 import com.crud.app.repositories.CategoriaRepository;
 import com.crud.app.services.exceptions.DataIntegrityException;
 import com.crud.app.services.exceptions.ObjectNotFoundException;
@@ -53,4 +54,9 @@ public class CategoriaService {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return categoriaRepository.findAll(pageRequest);
 	}
+
+	public Categoria saveFromDTO(CategoriaDTO objDTO) {
+		return new Categoria(objDTO.getId(), objDTO.getNome());
+	}
+
 }
