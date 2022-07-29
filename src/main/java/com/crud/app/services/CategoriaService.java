@@ -35,7 +35,7 @@ public class CategoriaService {
 
 	public <S extends Categoria> S save(S entity) {
 		return categoriaRepository.save(entity);
-	}
+	}	
 
 	public Categoria update(Categoria categoria) {
 		findById(categoria.getId());
