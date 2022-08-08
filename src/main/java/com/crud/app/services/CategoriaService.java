@@ -35,7 +35,7 @@ public class CategoriaService {
 
 	public <S extends Categoria> S save(S entity) {
 		return categoriaRepository.save(entity);
-	}	
+	}
 
 	public Categoria update(Categoria categoria) {
 		Categoria catObj = findById(categoria.getId());
@@ -59,10 +59,10 @@ public class CategoriaService {
 	public Categoria saveFromDTO(CategoriaDTO objDTO) {
 		return new Categoria(objDTO.getId(), objDTO.getNome());
 	}
-	
+
 	private void updateDataCliente(Categoria newCatObj, Categoria objCat) {
 		newCatObj.setNome(objCat.getNome());
-		 
+	
 	}
 
 }

@@ -28,6 +28,6 @@ public class PedidoResource {
 	@GetMapping
 	public List<Pedido> findAll() {
 		return clienteService.findAll();
-	}
+	}	
 
 }

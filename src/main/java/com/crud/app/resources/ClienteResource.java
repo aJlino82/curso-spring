@@ -22,6 +22,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.crud.app.domain.Cliente;
 import com.crud.app.dto.ClienteDTO;
+import com.crud.app.dto.ClienteNewDTO;
 import com.crud.app.services.ClienteService;
 
 @RestController
@@ -38,7 +39,7 @@ public class ClienteResource {
 		return ResponseEntity.ok().body(catListDTO);
 
 	}
-
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<Cliente> findById(@PathVariable Long id) {
 		Cliente obj = this.clienteService.findById(id);
@@ -46,7 +47,7 @@ public class ClienteResource {
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> save(@Valid @RequestBody ClienteDTO objDTO) {
+	public ResponseEntity<Void> save(@Valid @RequestBody ClienteNewDTO objDTO) {	
 
 		Cliente obj = clienteService.saveFromDTO(objDTO);
 		obj = clienteService.save(obj);

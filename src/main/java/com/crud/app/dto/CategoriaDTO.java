@@ -17,7 +17,7 @@ public class CategoriaDTO implements Serializable {
 	private String nome;
 
 	public CategoriaDTO() {
-
+	
 	}
 
 	public CategoriaDTO(Categoria cat) {
